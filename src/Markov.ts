@@ -17,7 +17,6 @@ export class Markov {
         const data = markovData.finalData[current];
         if (!data) return sequence;
         const next = markovData.chance.choose(data);
-        console.log(next)
         sequence += next;
         return this.choose(next, markovData, sequence, maxLength);
     }

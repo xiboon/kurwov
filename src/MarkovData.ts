@@ -42,7 +42,6 @@ export class MarkovData {
     }
     private _createStartData(): Data[] {
         const data = this.chance.createChanceArray(this.data.map(e => e.substring(0, this.sequence)));
-        console.log(data)
         return data;
     }
 }
