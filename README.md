@@ -1,2 +1,2 @@
-# ts-template
-My template for typescript projects
+# markov (i dont have a name yet lol)
+a cool lib for generating text using markov chains
