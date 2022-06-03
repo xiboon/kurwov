@@ -11,17 +11,21 @@ export class MarkovData {
     chance: Chance;
     finalData: Record<string, Data[]>;
     startData: Data[];
+    endDelimiter: string;
     constructor(data: MarkovDataOptions) {
         this.data = data.data;
         this.chance = new Chance();
         this.sequence = data.sequenceLength;
         this._splitData = {}
+        // the character to put at the end of data
+        this.endDelimiter = '󿼏'
         this._split();
         this.finalData = this._createFinalData();
         this.startData = this._createStartData();
     }
     private _split() {
         this.data.forEach(e => {
+            e += this.endDelimiter;
             let split = []
             for (var i = 0, charsLength = e.length; i < charsLength; i += this.sequence) {
                 split.push(e.substring(i, i + this.sequence));
@@ -41,7 +45,9 @@ export class MarkovData {
         return finalData;
     }
     private _createStartData(): Data[] {
-        const data = this.chance.createChanceArray(this.data.map(e => e.substring(0, this.sequence)));
+        const data = this.chance.createChanceArray(
+            this.data.map(e => e.substring(0, this.sequence))
+        );
         return data;
     }
 }

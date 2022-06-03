@@ -15,6 +15,7 @@ export class Markov {
     choose(current: string, markovData: MarkovData, sequence: string, maxLength: number) {
         if (sequence.length >= maxLength) return sequence;
         const data = markovData.finalData[current];
+        if (sequence.endsWith(markovData.endDelimiter)) return sequence.replaceAll(markovData.endDelimiter, '');
         if (!data) return sequence;
         const next = markovData.chance.choose(data);
         sequence += next;

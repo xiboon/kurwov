@@ -8,8 +8,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.6.2"
   },
-  "name": "template",
-  "description": "a template for new typescript projects, replace the data in here",
+  "name": "kurwov",
+  "description": "a markov chain library",
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/"
+    "url": "git+https://github.com/xiboon/markov"
   },
   "author": "xiboon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/"
+    "url": "https://github.com/xiboon/markov/issues"
   },
   "homepage": ""
 }
