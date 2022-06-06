@@ -1,3 +1,5 @@
 .vscode
 node_modules
 dist
+# that's my tool for benchmarking the speed 
+src/speed.ts
