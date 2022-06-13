@@ -50,4 +50,24 @@ export class MarkovData {
         );
         return data;
     }
+    async add(data: string) {
+        this.data.push(data)
+        data += this.endDelimiter;
+        let split = []
+        for (var i = 0, charsLength = data.length; i < charsLength; i += this.sequence) {
+            split.push(data.substring(i, i + this.sequence));
+        }
+        const newData = {};
+        split.forEach((e, i) => {
+            if (!split[i + 1]) return;
+            if (!newData[e]) newData[e] = [];
+            newData[e].push(split[i + 1])
+        })
+        this.startData = this._createStartData()
+        const finalData = {};
+        Object.keys(newData).forEach(e => {
+            finalData[e] = this.chance.createChanceArray(newData[e])
+        })
+        this.finalData = { ...finalData, ...this.finalData };
+    }
 }
