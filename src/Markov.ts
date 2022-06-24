@@ -5,13 +5,12 @@ export interface MarkovOptions {
     maxLength?: number;
 }
 export class Markov {
-    constructor() { }
-    generate(options: MarkovOptions) {
+    static generate(options: MarkovOptions) {
         const data = options.data
         const randomData = data.getStart();
         return this.choose(randomData, data, randomData, options.maxLength || 2000000000000);
     }
-    choose(current: string, markovData: MarkovData, sequence: string, maxLength: number) {
+    static choose(current: string, markovData: MarkovData, sequence: string, maxLength: number) {
         if (sequence.endsWith(markovData.endDelimiter)) return sequence.replaceAll(markovData.endDelimiter, '');
         if (sequence.length >= maxLength) return sequence;
         const next = markovData.getNext(current);

@@ -15,19 +15,10 @@ export class MarkovData {
         // the character to put at the end of data
         this.endDelimiter = '󿼏'
         this._createFinalData();
-        // this.startData = this._createStartData();
-    }
+        }
     private _createFinalData() {
         this.data.forEach(e => {
             e += this.endDelimiter;
-            // for (let i = 0, charsLength = e.length; i < charsLength; i += this.sequence) {
-            //     split.push(e.substring(i, i + this.sequence));
-            // }
-            // split.forEach((e, i) => {
-            //     if (!split[i + 1]) return;
-            //     if (!this.finalData[e]) this.finalData[e] = [];
-            //     this.finalData[e].push(split[i + 1])
-            // })
             let current;
             for (let i = 0, charsLength = e.length; i < charsLength; i += this.sequence) {
                 const next = e.substring(i, i + this.sequence);
@@ -60,13 +51,11 @@ export class MarkovData {
         for (let i = 0, charsLength = data.length; i < charsLength; i += this.sequence) {
             split.push(data.substring(i, i + this.sequence));
         }
-        const newData = {};
         split.forEach((e, i) => {
             if (!split[i + 1]) return;
-            newData[e] ??= [];
-            newData[e].push(split[i + 1]);
+            this.finalData[e] ??= [];
+            this.finalData[e].push(split[i + 1]);
         })
         this.startData.push(data.substring(0, this.sequence));
-        this.finalData = newData;
     }
 }
