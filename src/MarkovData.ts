@@ -36,8 +36,8 @@ export class MarkovData {
                     current = next;
                     continue;
                 }
-                if (!this.finalData[current]) this.finalData[current] = [];
-                this.finalData[current].push(next)
+                this.finalData[current] ??= [];
+                this.finalData[current].push(next);
                 current = next;
             }
         })
@@ -63,10 +63,10 @@ export class MarkovData {
         const newData = {};
         split.forEach((e, i) => {
             if (!split[i + 1]) return;
-            if (!newData[e]) newData[e] = [];
-            newData[e].push(split[i + 1])
+            newData[e] ??= [];
+            newData[e].push(split[i + 1]);
         })
-        this.startData.push(data.substring(0, this.sequence))
-        this.finalData = newData
+        this.startData.push(data.substring(0, this.sequence));
+        this.finalData = newData;
     }
 }
