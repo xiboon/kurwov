@@ -7,7 +7,7 @@ export class MarkovData {
     data: string[];
     sequence: number;
     finalData: Record<string, string[]> = {};
-    startData: string[];
+    startData: string[] = [];
     endDelimiter: string;
     constructor(data: MarkovDataOptions) {
         this.data = data.data;
@@ -15,25 +15,34 @@ export class MarkovData {
         // the character to put at the end of data
         this.endDelimiter = '󿼏'
         this._createFinalData();
-        this.startData = this._createStartData();
+        // this.startData = this._createStartData();
     }
     private _createFinalData() {
         this.data.forEach(e => {
             e += this.endDelimiter;
-            let split = []
+            // for (let i = 0, charsLength = e.length; i < charsLength; i += this.sequence) {
+            //     split.push(e.substring(i, i + this.sequence));
+            // }
+            // split.forEach((e, i) => {
+            //     if (!split[i + 1]) return;
+            //     if (!this.finalData[e]) this.finalData[e] = [];
+            //     this.finalData[e].push(split[i + 1])
+            // })
+            let current;
             for (let i = 0, charsLength = e.length; i < charsLength; i += this.sequence) {
-                split.push(e.substring(i, i + this.sequence));
+                const next = e.substring(i, i + this.sequence);
+                if (!current) {
+                    this.startData.push(next)
+                    current = next;
+                    continue;
+                }
+                if (!this.finalData[current]) this.finalData[current] = [];
+                this.finalData[current].push(next)
+                current = next;
             }
-            split.forEach((e, i) => {
-                if (!split[i + 1]) return;
-                if (!this.finalData[e]) this.finalData[e] = [];
-                this.finalData[e].push(split[i + 1])
-            })
         })
     }
-    private _createStartData(): string[] {
-        return this.data.map(e => e.substring(0, this.sequence))
-    }
+
     getStart() {
         const random = Math.floor(Math.random() * this.startData.length);
         return this.startData[random];
