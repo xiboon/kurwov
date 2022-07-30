@@ -6,9 +6,9 @@ export interface MarkovOptions {
 }
 export class Markov {
     static generate(options: MarkovOptions) {
-        const data = options.data
+        const {data} = options;
         const randomData = data.getStart();
-        return this.choose(randomData, data, randomData, options.maxLength || 2000000000000);
+        return this.choose(randomData, data, randomData, options.maxLength || 1000);
     }
     static choose(current: string, markovData: MarkovData, sequence: string, maxLength: number) {
         if (sequence.endsWith(markovData.endDelimiter)) return sequence.replaceAll(markovData.endDelimiter, '');

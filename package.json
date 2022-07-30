@@ -11,7 +11,7 @@
   },
   "name": "kurwov",
   "description": "a markov chain library",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/xiboon/markov/issues"
   },
-  "homepage": "https://github.com/xiboon/markov"
+  "homepage": "https://github.com/xiboon/markov",
+  "dependencies": {
+    "kurwov": "^1.0.3"
+  }
 }
