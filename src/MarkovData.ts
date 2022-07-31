@@ -1,16 +1,13 @@
 interface MarkovDataOptions {
     data: string[]
-    sequenceLength: number
 }
 export class MarkovData {
     data: string[];
-    sequence: number;
     finalData: Record<string, string[]> = {};
     startData: string[] = [];
     endDelimiter = '󿼏';
     constructor(data: MarkovDataOptions) {
         this.data = data.data;
-        this.sequence = data.sequenceLength;
         this._createData();
     }
     private _createData() {
