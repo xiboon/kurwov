@@ -4,6 +4,7 @@ export interface MarkovOptions {
     data: MarkovData,
     maxLength?: number;
 }
+
 export class Markov {
     static generate(options: MarkovOptions) {
         const {data} = options;

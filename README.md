@@ -5,14 +5,14 @@ A fast, dependency-free library for creating [Markov Chains](https://en.wikipedi
 Generating a dataset.
 ```ts
 import { MarkovData } from 'kurwov';
-const sentences = ['your sentence', 'another sentence'];
+const sentences = ['i love hamburgers', 'i love cats'];
 const data = new MarkovData({ data: sentences });
 ```
 
 Using your dataset to generate a sentence.
 ```ts
 import { Markov } from 'kurwov';
-Markov.generate({data, length: 100})
+Markov.generate({ data, length: 100 });
 ```
 
 ## Speed
