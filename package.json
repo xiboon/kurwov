@@ -7,15 +7,20 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublishOnly": "npx tsc"
+    "test": "npm run lint && npm run test:typescript",
+    "test:typescript": "tsc --noEmit",
+    "lint": "eslint .",
+    "prepublishOnly": "tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xiboon/markov"
   },
   "author": "xiboon",
-  "license": "MIT",
+  "license": "Apache-2.0",
+  "keywords": [
+    "markov"
+  ],
   "bugs": {
     "url": "https://github.com/xiboon/markov/issues"
   },
