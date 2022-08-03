@@ -1,3 +1,2 @@
-import { MarkovData } from "./MarkovData";
-import { Markov } from "./Markov";
-export { Markov, MarkovData };
+export * from "./MarkovData";
+export * from "./Markov";

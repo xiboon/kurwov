@@ -1,6 +1,7 @@
-interface MarkovDataOptions {
+export interface MarkovDataOptions {
     data: string[]
 }
+
 export class MarkovData {
     data: string[];
     finalData: Record<string, string[]> = {};
@@ -10,6 +11,7 @@ export class MarkovData {
         this.data = data.data;
         this._createData();
     }
+
     private _createData() {
         for (let e of this.data) {
             e += this.endDelimiter;
