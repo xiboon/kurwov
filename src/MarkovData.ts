@@ -14,13 +14,14 @@ export class MarkovData {
             const words = e.split(' ');
             this.startData.push(words[0]);
             for (let i = 0; i < words.length; i++) {
-                const word = words[i];
+                const word = `${words[i]} `;
+                const next = `${words[i + 1]} `;
                 if (!word.length) continue;
                 if (!this.finalData[word]) {
-                    this.finalData[word] = [words[i + 1]]; continue;
+                    this.finalData[word] = [next]; continue;
                 }
 
-                this.finalData[word].push(words[i + 1]);
+                this.finalData[word].push(next);
             }
         }
     }
