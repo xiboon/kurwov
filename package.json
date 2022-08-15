@@ -1,7 +1,7 @@
 {
   "name": "kurwov",
   "description": "a markov chain library",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "main": "dist/index.js",
   "files": [
     "dist"
