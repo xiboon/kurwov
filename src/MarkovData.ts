@@ -1,14 +1,10 @@
-export interface MarkovDataOptions {
-    data: string[]
-}
-
 export class MarkovData {
     data: string[];
     finalData: Record<string, string[]> = {};
     startData: string[] = [];
     endDelimiter = '󿼏';
-    constructor(data: MarkovDataOptions) {
-        this.data = data.data;
+    constructor(data: string[]) {
+        this.data = data;
         this._createData();
     }
 
@@ -16,15 +12,14 @@ export class MarkovData {
         for (let e of this.data) {
             e += this.endDelimiter;
             const words = e.split(' ');
+            this.startData.push(words[0]);
             for (let i = 0; i < words.length; i++) {
                 const word = words[i];
                 if (!word.length) continue;
-                if (i === 0) {
-                    this.startData.push(word);
-                }
                 if (!this.finalData[word]) {
                     this.finalData[word] = [words[i + 1]]; continue;
                 }
+
                 this.finalData[word].push(words[i + 1]);
             }
         }
@@ -40,6 +35,17 @@ export class MarkovData {
         const random = Math.floor(Math.random() * data.length);
         return data[random];
     }
-    // async add(data: string) {
-    // }
+    async add(data: string) {
+        data += this.endDelimiter;
+        const words = data.split(' ');
+        this.startData.push(words[0]);
+        for (let i = 0; i < words.length; i++) {
+            const word = words[i];
+            if (!word.length) continue;
+            if (!this.finalData[word]) {
+                this.finalData[word] = [words[i + 1]]; continue;
+            }
+            this.finalData[word].push(words[i + 1]);
+            }
+    }
 }

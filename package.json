@@ -32,7 +32,12 @@
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "kurwov": "2.1",
     "prettier": "^2.6.2",
+    "tisbench": "^1.0.0",
     "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "picocolors": "^1.0.0"
   }
 }
