@@ -14,7 +14,7 @@ export class MarkovData {
             for (let i = 0; i < words.length; i++) {
                 const word = `${words[i]} `;
                 const next = `${words[i + 1]} `;
-                if (word === 'undefined ' || next === 'undefined ') return;
+                if (word === 'undefined ' || next === 'undefined ') continue;
 
                 if (!this.finalData[word]) {
                     this.finalData[word] = [next]; continue;
