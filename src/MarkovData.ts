@@ -1,21 +1,21 @@
 export class MarkovData {
-    data: string[];
     finalData: Record<string, string[]> = {};
     startData: string[] = [];
     endDelimiter = '󿼏';
     constructor(data: string[]) {
-        this.data = data;
-        this._createData();
+        this._createData(data);
     }
 
-    private _createData() {
-        for (let e of this.data) {
+    private _createData(data) {
+        for (let e of data) {
             e += this.endDelimiter;
             const words = e.split(' ');
-            this.startData.push(words[0]);
+            this.startData.push(`${words[0]} `);
             for (let i = 0; i < words.length; i++) {
                 const word = `${words[i]} `;
                 const next = `${words[i + 1]} `;
+                if (word === 'undefined ' || next === 'undefined ') return;
+
                 if (!word.length) continue;
                 if (!this.finalData[word]) {
                     this.finalData[word] = [next]; continue;
@@ -33,6 +33,7 @@ export class MarkovData {
     getNext(current: string) {
         if (!current) return;
         const data = this.finalData[current];
+        if (!data) return;
         const random = Math.floor(Math.random() * data.length);
         return data[random];
     }

@@ -12,7 +12,7 @@ export class Markov {
     }
 
     static choose(current: string, markovData: MarkovData, sequence: string, maxLength: number): string {
-        if (sequence.endsWith(markovData.endDelimiter)) return sequence.replaceAll(markovData.endDelimiter, '');
+        if (sequence.endsWith(`${markovData.endDelimiter} `)) return sequence.replaceAll(`${markovData.endDelimiter} `, '');
         if (sequence.length >= maxLength) return sequence;
         const next = markovData.getNext(current);
 
