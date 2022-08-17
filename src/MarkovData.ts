@@ -39,7 +39,7 @@ export class MarkovData {
     async add(data: string) {
         data += this.endDelimiter;
         const words = data.split(' ');
-        this.startData.push(words[0]);
+        this.startData.push(`${words[0]} `);
         for (let i = 0; i < words.length; i++) {
             const word = `${words[i]} `;
             const next = `${words[i + 1]} `;
