@@ -20,4 +20,8 @@ export class Markov {
         sequence += next;
         return this.choose(next, markovData, sequence, maxLength);
     }
+    static complete(options: MarkovOptions & {start: string}) {
+        const {start} = options;
+        return this.choose(start, options.data, start, options.maxLength || 1000);
+    }
 }
