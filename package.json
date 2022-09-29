@@ -2,15 +2,20 @@
   "name": "kurwov",
   "description": "a markov chain library",
   "version": "3.2.0",
-  "main": "dist/index.js",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
   "scripts": {
     "test": "npm run lint && npm run test:typescript",
     "test:typescript": "tsc --noEmit",
     "lint": "eslint .",
-    "prepublishOnly": "tsc"
+    "prepublishOnly": "unbuild"
   },
   "repository": {
     "type": "git",
