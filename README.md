@@ -15,15 +15,36 @@ import { Markov } from 'kurwov';
 Markov.generate({ data, length: 100 });
 ```
 
+Adding an sentence to the dataset.
+```ts
+data.add('i love dogs');
+```
+
+Completing a sentence.
+```ts
+Markov.complete({ data, start: 'i love' }); // i love dogs, i love hamburgers, or i love cats
+```
+## Features
+Feature | kurwov | markov-typescript | markov-generator | markov-strings | markov-chains
+--- | --- | --- | --- | --- | ---
+Dependency-free | ✔️ | ❌ | ✔️ | ❌ | ❌
+Typings | ✔️ | ❌ | ❌ | ✔️ | ❌
+Generating sentences | ✔️ | ✔️ | ✔️ | ✔️ | ✔️
+Completing sentences | ✔️ | ❌ | ❌ | ❌ | ❌
+Adding stuff other than strings | ❌ | ✔️ | ❌ | ❌ | ✔️
+
 ## Speed
-Test | Sentences | Time
---- | --- | ---
-Generating a dataset | 10000 | 26.416 milliseconds
-Generating a dataset | 100000 | 0.216 seconds
-Generating a sentence | 10000 | 0.175 milliseconds
-Generating a sentence | 100000 | 0.266 milliseconds
-Adding to a dataset | 10000 | 0.036 milliseconds
-Adding to a dataset | 100000 | 1.012 milliseconds
+### kurwov speed over versions
+Benchmark | v1 | v2 | v3
+--- | --- | --- | ---
+Generating a dataset with 10000 sentences. | 649.55ms | 89.26ms | 50.53ms
+Generating a dataset with 100000 sentences. | 25509.70ms | 873.43ms | 572.49ms
+
+### kurwov speed compared to other markov packages
+Benchmark | kurwov | markov-typescript | markov-generator | markov-strings | markov-chains  
+--- | --- | --- | --- | --- | ---
+Generating a dataset with 10000 sentences. | 50.53ms | 419.66ms | 346.16ms | 1834.32ms | N/A (errored)
+Generating a dataset with 100000 sentences. | 572.49ms | 6221.28ms | 28329.17ms | N/A (couldn't finish in over 10 minutes) | N/A (errored)
 
 ## My other packages
 [Tiscord](https://npmjs.com/package/tiscord)

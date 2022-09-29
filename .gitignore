@@ -4,3 +4,4 @@ dist
 # that's my tool for benchmarking the speed 
 src/speed.ts
 all.txt
+dataset.txt
