@@ -4,10 +4,8 @@ export class MarkovData {
     endDelimiter = '󿼏';
     forbidden: string[];
     constructor(data: string[]) {
-        this._createData(data);
-        // @ts-expect-error
-        this.finalData.constructor = [];
         this.forbidden = Object.getOwnPropertyNames(Object.getPrototypeOf({}));
+        this._createData(data);
     }
 
     private async _createData(data) {
@@ -15,18 +13,19 @@ export class MarkovData {
             e += this.endDelimiter;
             const words: string[] = e.split(' ');
             this.startData.push(words[0]);
+
             words.forEach((word, i) => {
                 if (this.forbidden.includes(word)) word = `${word} `;
                 const next = words[i + 1];
                 if (word === undefined || next === undefined) return;
 
-                if (!this.finalData[word]) {
+                if (this.finalData[word] === undefined) {
                     this.finalData[word] = [next];
                     return;
                 }
-                if (!this.finalData[word].push) {
-                    console.log(word, this.finalData[word]);
-                }
+                // if (!this.finalData[word].push) {
+                //     console.log(word, this.finalData[word]);
+                // }
                 this.finalData[word].push(next);
             });
         }

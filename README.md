@@ -1,4 +1,4 @@
-# kurwov
+<h1 align=center> kurwov </h1>
 A fast, dependency-free library for creating [Markov Chains](https://en.wikipedia.org/wiki/Markov_chain)
 
 ## API
@@ -6,13 +6,13 @@ Generating a dataset.
 ```ts
 import { MarkovData } from 'kurwov';
 const sentences = ['i love hamburgers', 'i love cats'];
-const data = new MarkovData({ data: sentences });
+const data = new MarkovData(sentences);
 ```
 
 Using your dataset to generate a sentence.
 ```ts
 import { Markov } from 'kurwov';
-Markov.generate({ data, length: 100 });
+Markov.generate({ data, length: 100 }); // i love hamburgers or i love cats
 ```
 
 Adding an sentence to the dataset.
