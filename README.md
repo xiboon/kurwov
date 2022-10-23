@@ -1,5 +1,5 @@
 <h1 align=center> kurwov </h1>
-A fast, dependency-free library for creating [Markov Chains](https://en.wikipedia.org/wiki/Markov_chain)
+A fast, dependency-free library for creating Markov Chains.
 
 ## API
 Generating a dataset.
