@@ -1,33 +1,34 @@
 export class MarkovData {
-    finalData: Map<string, string[]> = new Map();
+    finalData: Record<string, string[]> = {};
     startData: string[] = [];
     endDelimiter = '󿼏';
-    // forbidden: Set<string>;
+    forbidden: string[];
     constructor(data: string[]) {
-        // this.forbidden = new Set(Object.getOwnPropertyNames(Object.getPrototypeOf({})));
+        this.forbidden = Object.getOwnPropertyNames(Object.getPrototypeOf({}));
         this._createData(data);
     }
 
     private async _createData(data) {
-        let wordCount = 0;
         for (let e of data) {
             e += this.endDelimiter;
             const words: string[] = e.split(' ');
             this.startData.push(words[0]);
 
             words.forEach((word, i) => {
+                if (this.forbidden.includes(word)) word = `${word} `;
                 const next = words[i + 1];
-                if (next === undefined) return;
+                if (word === undefined || next === undefined) return;
 
-                if (!this.finalData.has(word)) {
-                    this.finalData.set(word, [next]);
+                if (this.finalData[word] === undefined) {
+                    this.finalData[word] = [next];
                     return;
                 }
-                this.finalData.get(word).push(next);
-                wordCount++;
+                // if (!this.finalData[word].push) {
+                //     console.log(word, this.finalData[word]);
+                // }
+                this.finalData[word].push(next);
             });
         }
-        console.log(wordCount)
     }
 
     getStart() {

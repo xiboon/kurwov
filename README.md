@@ -38,7 +38,7 @@ Adding stuff other than strings | ❌ | ✔️ | ❌ | ❌ | ✔️
 Benchmark | v1 | v2 | v3
 --- | --- | --- | ---
 Generating a dataset with 10000 sentences. | 649.55ms | 89.26ms | 50.53ms
-Generating a dataset with 100000 sentences. | 25509.70ms | 873.43ms | 1474.59ms
+Generating a dataset with 100000 sentences. | 25509.70ms | 873.43ms | 572.49ms
 
 ### kurwov speed compared to other markov packages
 Benchmark | kurwov | markov-typescript | markov-generator | markov-strings | markov-chains  
