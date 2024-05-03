@@ -1,17 +1,22 @@
 {
     "compilerOptions": {
-        "target": "es2021",
-        "module": "commonjs",
-        "allowJs": true,
-        "moduleResolution": "node",
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "declaration": true,
-        "sourceMap": true,
-        "removeComments": true,
+        "target": "es2022",
+        "lib": ["esnext"],
+
+        "module": "esnext",
+        "moduleResolution": "bundler",
+
         "outDir": "dist",
-        "baseUrl": "src"
+        "esModuleInterop": true,
+        "verbatimModuleSyntax": true,
+
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "noEmitOnError": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "declaration": true,
+
+        "strict": true
     }
 }

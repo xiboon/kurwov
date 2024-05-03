@@ -8,7 +8,7 @@ export class MarkovData {
         this._createData(data);
     }
 
-    private async _createData(data) {
+    private async _createData(data: string[]) {
         for (let e of data) {
             e += this.endDelimiter;
             const words: string[] = e.split(' ');
