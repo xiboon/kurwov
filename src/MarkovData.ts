@@ -37,7 +37,7 @@ export class MarkovData {
     }
     getNext(current: string) {
         if (!current) return;
-        const data = this.finalData[current.slice(0, -1)];
+        const data = this.finalData[this.forbidden.includes(current.slice(0, -1)) ? current : current.slice(0, -1)];
         if (!data) return;
         const random = Math.floor(Math.random() * data.length);
         return data[random].endsWith(' ') ? data[random] : `${data[random]} `;
