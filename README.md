@@ -12,7 +12,7 @@ const data = new MarkovData(sentences);
 Using your dataset to generate a sentence.
 ```ts
 import { Markov } from 'kurwov';
-Markov.generate({ data, length: 100 }); // i love hamburgers or i love cats
+Markov.generate({ data, maxLength: 100 }); // i love hamburgers or i love cats
 ```
 
 Adding an sentence to the dataset.

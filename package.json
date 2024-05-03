@@ -1,45 +1,49 @@
 {
   "name": "kurwov",
-  "description": "a markov chain library",
   "version": "3.2.5",
+  "description": "a markov chain library",
+  "scripts": {
+    "build": "tsup",
+    "check": "biome check .",
+    "check:apply": "biome check . --apply-unsafe",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js",
+    "types": "./dist/index.d.ts"
+  },
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "scripts": {
-    "test": "npm run lint && npm run test:typescript",
-    "test:typescript": "tsc --noEmit",
-    "lint": "eslint .",
-    "prepublishOnly": "unbuild"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xiboon/markov"
-  },
   "author": "xiboon",
   "license": "Apache-2.0",
   "keywords": [
     "markov"
   ],
-  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiboon/markov"
+  },
   "bugs": {
     "url": "https://github.com/xiboon/markov/issues"
   },
-  "homepage": "https://github.com/xiboon/markov",
+  "homepage": "https://github.com/xiboon/markov#readme",
   "devDependencies": {
-    "@types/node": "^17.0.25",
-    "@typescript-eslint/eslint-plugin": "^5.19.0",
-    "@typescript-eslint/parser": "^5.19.0",
-    "eslint": "^8.13.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.6.2",
-    "typescript": "^5.4.5",
-    "unbuild": "^0.8.11"
-  }
+    "@biomejs/biome": "^1.7.2",
+    "@types/node": "^20.12.8",
+    "tsup": "^8.0.2",
+    "tsx": "^4.9.0",
+    "typescript": "^5.4.5"
+  },
+  "publishConfig": {
+    "provenance": true
+  },
+  "packageManager": "pnpm@9.0.6"
 }
