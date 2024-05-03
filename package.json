@@ -29,12 +29,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xiboon/markov"
+    "url": "git+https://github.com/xiboon/kurwov.git"
   },
   "bugs": {
-    "url": "https://github.com/xiboon/markov/issues"
+    "url": "https://github.com/xiboon/kurwov/issues"
   },
-  "homepage": "https://github.com/xiboon/markov#readme",
+  "homepage": "https://github.com/xiboon/kurwov#readme",
   "devDependencies": {
     "@biomejs/biome": "^1.7.2",
     "@types/node": "^20.12.8",
